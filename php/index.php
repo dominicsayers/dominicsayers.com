@@ -1,156 +1,90 @@
-<!doctype html>
-<html lang="en">
+<?php require_once '_context/site-context.php'; ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Welcome to OpenShift</title>
-  <style>
-  html { 
-  background: black; 
-  }
-  body {
-    background: #333;
-    background: -webkit-linear-gradient(top, black, #666);
-    background: -o-linear-gradient(top, black, #666);
-    background: -moz-linear-gradient(top, black, #666);
-    background: linear-gradient(top, black, #666);
-    color: white;
-    font-family: "Helvetica Neue",Helvetica,"Liberation Sans",Arial,sans-serif;
-    width: 40em;
-    margin: 0 auto;
-    padding: 3em;
-  }
-  a {
-    color: white;
-  }
+	<meta content="z2ccuoicPgUWN6F6QGaQZbmwhyOw07VBoupjPOEBsCw=" name="verify-v1" />
+	<meta content="bad632ec3dca23322c720e7192af579ad0ab7cad" name="microid" />
+	<meta name="google-site-verification" content="QpPXgB6u6SjoFPP57mW1mDDkykp0Xeqx2yQbx23IOVI" />
+	<link href="http://www.myopenid.com/server" rel="openid.server" />
+	<link href="http://dominic.sayers.myopenid.com/" rel="openid.delegate" />
+	<meta content="http://dominic.sayers.myopenid.com/xrds" http-equiv="X-XRDS-Location" />
 
-  h1 {
-    text-transform: capitalize;
-    -moz-text-shadow: -1px -1px 0 black;
-    -webkit-text-shadow: 2px 2px 2px black;
-    text-shadow: -1px -1px 0 black;
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
-    background: #CC0000;
-    width: 22.5em;
-    margin: 1em -2em;
-    padding: .3em 0 .3em 1.5em;
-    position: relative;
-  }
-  h1:before {
-    content: '';
-    width: 0;
-    height: 0;
-    border: .5em solid #91010B;
-    border-left-color: transparent;
-    border-bottom-color: transparent;
-    position: absolute;
-    bottom: -1em;
-    left: 0;
-    z-index: -1000;
-  }
-  h1:after {
-    content: '';
-    width: 0;
-    height: 0;
-    border: .5em solid #91010B;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    position: absolute;
-    bottom: -1em;
-    right: 0;
-    z-index: -1000;
-  }
-  h2 { 
-    margin: 2em 0 .5em;
-    border-bottom: 1px solid #999;
-  }
+	<meta name="author" content="<?php echo $_owner_full_name?>" />
+	<meta name="copyright" content="Copyright © 2011 <?php echo $_owner_full_name?>" />
+	<meta name="description" content="Dominic Sayers is a director working in the IT department of a multinational investment bank. He is interested in how people collaborate in large organisations, in particular the challenges of communicating across hierarchical structures." />
+	<meta name="keywords" content="Dominic Sayers is a director working in the IT department of a multinational investment bank. He is interested in how people collaborate in large organisations, in particular the challenges of communicating across hierarchical structures." />
+	<meta name="robots" content="all" />
 
-  pre {
-    background: black;
-    padding: 1em 0 0;
-    -webkit-border-radius: 1em;
-    -moz-border-radius: 1em;
-    border-radius: 1em;
-    color: #9cf;
-  }
+	<meta content="text/html;charset=UTF-8" http-equiv="Content-type" />
 
-  ul { 
-    margin: 0; 
-    padding: 0;
-  }
-  li {
-    list-style-type: none;
-    padding: .5em 0;
-  }
+	<link href="CSS/delicious.css" rel="stylesheet" type="text/css" />
+	<link href="CSS/layout.php" rel="stylesheet" type="text/css" />
+	<link href="CSS/style.php" rel="stylesheet" type="text/css" />
 
-  .brand {
-    display: block;
-    text-decoration: none;
-  }
-  .brand .brand-image {
-    float: left;
-    border: none;
-  }
-  .brand .brand-text {
-    float: left;
-    font-size: 24px;
-    line-height: 24px;
-    padding: 4px 0;
-    color: white;
-    text-transform: uppercase;
-  }
-  .brand:hover,
-  .brand:active {
-    text-decoration: underline;
-  }
+	<title><?php echo $_owner_full_name?></title>
 
-  .brand:before,
-  .brand:after {
-    content: ' ';
-    display: table;
-  }
-  .brand:after {
-    clear: both;
-  }
-  </style>
+	<style type="text/css">
+		.caption {text-align: center;}
+	</style>
 </head>
+
 <body>
-  <a href="http://openshift.com" class="brand">
-    <img class="brand-image"
-      alt="OpenShift logo"
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAAAAXNSR0IArs4c6QAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAARHgAAER4B27UUrQAABUhJREFUWMPFWFlsVGUU/s5/70zbaSltA7RQpJ2lC9CFkQkWIgSJxkAhRA0JCYFq4hPG6JsoGKNCtPigxqhvGlPAuGIaE4igNaElbIW2yNL2tkOtTYGWCqWF2e79fCh7p1Bmpnge/3vuOef7z/nPJiTxMHS6pMRuu6YqFNTTAJYSyAU4GZB0AH2AGCANAfc5Qrba6T3HrmECScYLwCioSIcV2AjidQDZ45Q/LJRaWrLV03X89P8GwHB5XwG4DcDkGPWEBKimNrzN094efGQAzjm9GWHFr4R4LiHKgFaSL3r8zYcmHEBbkW+KFo7UEyhKsNeHlMgyV8eJo4kQpqId9ub6HCoc+XWcxl8lcBTATwDax8GfZtHa054/f/bNg8ZcnyOhHjBc834E8MJ9/vML8aYZQX1hd1PP3WFXkhMRfYkIlpOoGomc0WRRTnch+XAQWG2KTNJNLbuy68C/cQMwXOWrAKkdgz8A8kMdg9X5fn/gQcI7POXLaMk3AGbe/P8SbF0D1KcGRGXpIJJpIQkWBHhnsf/Ie3GF0DmnMxmQT8bg7RellXr8ze+Ox3gAcBvNf+iUUhH5FODLSvScAerDGpiVxTAyGUYKzICA34nCwbhDyHB7N4L8PAofhVzh9jfvjffR/ZZTnupIsR8G0C9EjW7Tfnii/dBgrPL0u83kmjHy33Z3Z/zG97uKi7xpWA8GHZpE1mcZRne8MvXblfbxqQAWR+Fp+mdW5hZPjAqu5JVlhrTwOgrXi2ABbjjchF4FYGvi0qhprgagjYod4OeldXWRWBUEtdBjEH4mwIJ7vF2V4Dqgot0+NEFdPAqmdZ5tAXA8Slx6LrpKsxMHQJge5ft1v0oe2OOu+PZ39+LCOFqImqiXo8JzAeBkXlnmnoKK9LgACJl2R9gELsHW1saUwKCpnbIoa8UMTokVgGXJmSjHkfNWUlWDy9d6USVdyoiEF8b1iElxQKHuPG1D/bCtVEBhCiykMQQFgCK2mN2sSx+tkdcbhGq7wKSkK9RnmsCG2xVSLsflAR1S6eloWhawtF8yGJGskSJDBdQR8pIjZMXcfFmm1gOg2lRaSRdT1AD1PBPQbCAyxcRMifCpc41HEtILNbh9s8SSvYTUmBp2LDGOdCOB1OD0XbeByWliwY5bugc9nU2T4wqhCx7PNAV9bSGwARp3TzVaP0j09GQUzJubLUgefY3SEHMh63MVr4FIlYL+7C1AlCwAmxM+/plYy6hhgN2xp1HBawAr72krnH3uoicTaXyHx7uIwKZoT0QhUhszAAI7x7ivL0a60/jp77yyTFrWt6N6rxE99c7OkxdiBhC2y/cAorXHpama/aNG8dkOO32b6p3zTzXmeysfPu4LkkKafA3IrGjfCfPtuGfiPlfx+xBsuWtwpa3zIuy2YaoZ5o0eSQc5TVnb53aeeAuk9eBtRvkqUH0MoTsqA7nL429eFzeA3lyfQ08eaiNgCrjTYNozQ1S+WyUfQCosTLqZ+oiDUNwhggPujpZTuCMXGwUV6cJgKYnNIJffR3df2NLLZ5871puQrUR//pzpU7rOnAfJP53eDELrsoPpk4RIGRn5xqIBAAdBOCAoBjBjPJsJUdZSt9HSOGFrld5cn2M4KbwfkIUJzqYhQlYWdJ7YN2FrFQCY3nPsmk61AuSuRNYyUdaiRBk/7tViR37Zcir1JYC8WNshgjWWPfhq0dmzVx/5bhQAWnLKU1Md8gZHOsjxAgmD2GEKq4s6m1sxASQPu16HiBh53goqPg9ac0TEcwNQEOBlQAZEcMgC94dDZt2c7r8GMIH0H43ZRDC51RVCAAAAAElFTkSuQmCC">
-    <div class="brand-text"><strong>Open</strong>Shift</div>
-  </a>
-  <h1>
-    Welcome to OpenShift
-  </h1>
-  <p>
-    Place your application here
-  </p>
-  <p>
-    In order to commit to your new project, go to your projects git repo (created with the rhc app create command).  Make your changes, then run:
-  </p>
-  <pre>
-    git commit -a -m 'Some commit message'
-    git push
-  </pre>
-  <p>
-    Then reload this page.
-  </p>
-  
-  <h2>
-    What's next?
-  </h2>
-  <ul>
-    <li>
-      Why not visit us at <a href="http://openshift.redhat.com">http://openshift.redhat.com</a>, or
-    </li>
-    <li>
-      You could get help in the <a href="http://www.redhat.com/openshift">OpenShift forums</a>, or
-    </li>
-    <li>
-      You're welcome to come chat with us in our IRC channel at #openshift on freenode.net
-    </li>
-  </ul>
+
+<div id="centre_content">
+	<div class="imageblock">
+		<a href="about">
+			<img alt="About <?php echo $_owner_full_name?>" height="122" src="static/images/about_<?php echo $_owner_nickname?>.png" width="200" class="image" /><br />
+			<p class="caption">About <?php echo $_owner_full_name?></p>
+		</a>
+	</div>
+
+<!--	<div class="imageblock">
+		<a href="http://www.thisisnotariot.org" target="_blank">
+			<img alt="This is not a riot" height="122" src="static/images/tinar_businesscard.png" width="200" class="image" /><br />
+			<p class="caption">This is not a riot</p>
+		</a>
+	</div>
+-->
+	<div class="imageblock">
+		<a href="http://isemail.info" target="_blank">
+			<img alt="Email address validation" height="122" src="static/images/thesearejustwords.gif" width="200" class="image" /><br />
+			<p class="caption">Email address validation</p>
+		</a>
+	</div>
+
+	<div class="imageblock">
+		<a href="tagging">
+			<img alt="Tagging and social software" height="122" src="static/images/Blogging_200.gif" width="200" class="image" /><br />
+			<p class="caption">Tagging and social software</p>
+		</a>
+	</div>
+
+	<div class="imageblock">
+		<a href="management">
+			<img alt="Organizations and technology" height="122" src="static/images/Company_hierarchy_200.gif" width="200" class="image" /><br />
+			<p class="caption">Organizations and technology</p>
+		</a>
+	</div>
+
+	<div class="imageblock">
+		<a href="rage">
+			<img alt="Rage and other stuff" height="122" src="static/images/Glob_of_chaos_200.gif" width="200" class="image" /><br />
+			<p class="caption">Rage and other stuff</p>
+		</a>
+	</div>
+
+
+	<br class="clearboth" />
+
+</div>
+
+
+<div id="sidebar_left"></div>
+<div id="sidebar_right"></div>
+<div id="banner" style="background-image:none;"></div>
+
+<?php include '_includes/analytics.php'; ?>
 </body>
+
 </html>

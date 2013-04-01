@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Shop</title>
+</head>
+
+<body>
+
+<style>
+.product-image {
+	border: solid 1px #ccc;
+}
+.product-title, .product-price, .product-shipping {
+	font-weight: bold;
+}
+.data-cell {
+	padding: 0px 50px 0px 10px;
+	border: solid 0px #fff;
+	vertical-align: top;
+}
+.align-cart {
+	padding-left: 480px;
+}
+</style>
+<div id="googlecart-widget" class="align-cart">
+</div>
+<table>
+		<tr class="product">
+				<td><img class="product-image" src="http://www.thisisnotariot.org/sites/default/files/tshirt1.png" /> </td>
+				<td class="data-cell">
+				<div class="product-title">
+						This is not a riot t-shirt</div>
+				<div class="product-price">
+						Price: £10.99</div>
+				<div class="product-shipping">
+						Shipping: £1.50</div>
+				<br />
+				<div class="googlecart-add-button">
+				</div>
+				</td>
+		</tr>
+</table>
+<div class="product">
+		<input class="product-title" type="hidden" value="T-Shirt">
+		<input class="product-image" type="hidden" value="http://www.thisisnotariot.org/sites/default/files/tshirt4.png">
+		<select class="product-attr-custom">
+		<option selected="selected" value="Small">Small</option>
+		<option value="Medium">Medium</option>
+		<option value="Large">Large</option>
+		</select><input class="product-price" type="hidden" value="10.99"><div class="googlecart-add-button" role="button" tabindex="0" title="Add to trolley">
+		</div>
+</div>
+<script id="googlecart-script" currency="GBP" integration="jscart-wizard" post-cart-to-sandbox="false" src="https://checkout.google.com/seller/gsc/v2/cart.js?mid=111156879049498" type="text/javascript"></script>
+</body>
+
+</html>

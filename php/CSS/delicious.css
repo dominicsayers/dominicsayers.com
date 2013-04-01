@@ -1,0 +1,17 @@
+﻿/*------------------------------------------------------------------*/
+/*	Styles for links from delicious.com script						*/
+/*------------------------------------------------------------------*/
+.delicious-post {
+	padding-left:7px;
+	padding-right:7px;
+	margin-left:8px;
+	margin-right:8px;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+.delicious-banner a {
+	font-size: 17px;
+	font-weight: bold;
+}

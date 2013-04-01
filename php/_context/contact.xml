@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<methods>
+	<method>
+		<description>Twitter</description>
+		<link>http://twitter.com/dominicsayers</link>
+		<image>twitter.png</image>
+		<other_text></other_text>
+		<link_text>Twitter</link_text>
+	</method>
+	<method>
+		<description>Comment</description>
+		<link>/about/#comments</link>
+		<image>document_14px.gif</image>
+		<other_text></other_text>
+		<link_text>Leave a comment</link_text>
+	</method>
+	<method>
+		<description>Email</description>
+		<link>mailto:dominic@sayers.cc</link>
+		<image>mail.gif</image>
+		<other_text></other_text>
+		<link_text>Email</link_text>
+	</method>
+</methods>

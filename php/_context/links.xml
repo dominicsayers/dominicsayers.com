@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<links>
+	<link>
+		<service>Blog</service>
+		<service_link>http://blog.dominicsayers.com/</service_link>
+		<service_description>Dominic's blog</service_description>
+		<title>My writing</title>
+		<feed_link>http://blog.dominicsayers.com/feed</feed_link>
+		<feed_title>Subscribe to Dominic's blog</feed_title>
+		<feed_icon_alt>Feed</feed_icon_alt>
+		<feed_icon>feed.gif</feed_icon>
+	</link>
+
+	<link>
+		<service>Twitter</service>
+		<service_link>http://twitter.com/dominicsayers</service_link>
+		<service_description>Twitter</service_description>
+		<title>Conversation</title>
+		<feed_link>http://twitter.com/statuses/user_timeline/7266412.rss</feed_link>
+		<feed_title>Subscribe to Dominic's tweets</feed_title>
+		<feed_icon_alt>Feed</feed_icon_alt>
+		<feed_icon>feed.gif</feed_icon>
+	</link>
+
+	<link>
+		<service>Tumblr</service>
+		<service_link>http://dominicsayers.tumblr.com/</service_link>
+		<service_description>Tumblr</service_description>
+		<title>I recommend</title>
+		<feed_link>http://dominicsayers.tumblr.com/rss</feed_link>
+		<feed_title>Subscribe to Dominic's recommendations</feed_title>
+		<feed_icon_alt>Feed</feed_icon_alt>
+		<feed_icon>feed.gif</feed_icon>
+	</link>
+
+	<link>
+		<service>Blog comments</service>
+		<service_link>http://blog.dominicsayers.com/</service_link>
+		<service_description>Dominic's blog</service_description>
+		<title>Comments</title>
+		<feed_link>http://blog.dominicsayers.com/comments/feed/</feed_link>
+		<feed_title>Subscribe to Dominic's blog comments</feed_title>
+		<feed_icon_alt>Feed</feed_icon_alt>
+		<feed_icon>feed.gif</feed_icon>
+	</link>
+
+	<link>
+		<service>Flickr</service>
+		<service_link>http://www.flickr.com/photos/dominicsayers/collections/</service_link>
+		<service_description>Flickr</service_description>
+		<title>Photographs</title>
+		<feed_link>http://api.flickr.com/services/feeds/photos_public.gne?id=44124468717@N01&amp;lang=en-us&amp;format=rss_200</feed_link>
+		<feed_title>Subscribe to Dominic's photostream</feed_title>
+		<feed_icon_alt>Feed</feed_icon_alt>
+		<feed_icon>feed.gif</feed_icon>
+	</link>
+
+	<link>
+		<service>Dopplr</service>
+		<service_link>http://www.dopplr.com/traveller/DominicSayers/public</service_link>
+		<service_description>Dopplr</service_description>
+		<title>Travel</title>
+		<feed_link>http://www.dopplr.com/traveller/DominicSayers/feed/mytrips/24d2f2d2d0d556d9c0fd3a029b94d7ef59e3750d5759870b7c800ced27911f32/all</feed_link>
+		<feed_title>Subscribe to my travel</feed_title>
+		<feed_icon_alt>Feed</feed_icon_alt>
+		<feed_icon>feed.gif</feed_icon>
+	</link>
+
+	<link>
+		<service>ping.fm</service>
+		<service_link>http://friendfeed.com/dominicsayers?service=internal</service_link>
+		<service_description>ping.fm (status updates and micro-blogs)</service_description>
+		<title>Status updates</title>
+		<feed_link>http://friendfeed.com/dominicsayers?service=internal&amp;format=atom</feed_link>
+		<feed_title>Subscribe to Dominic's status updates</feed_title>
+		<feed_icon_alt>Feed</feed_icon_alt>
+		<feed_icon>feed.gif</feed_icon>
+	</link>
+
+	<link>
+		<service>last.fm</service>
+		<service_link>http://www.last.fm/user/dominicsayers</service_link>
+		<service_description>last.fm</service_description>
+		<title>Tunes</title>
+		<feed_link>http://ws.audioscrobbler.com/1.0/user/DominicSayers/recenttracks.rss</feed_link>
+		<feed_title>Follow what Dominic is listening to</feed_title>
+		<feed_icon_alt>Feed</feed_icon_alt>
+		<feed_icon>feed.gif</feed_icon>
+	</link>
+
+	<link>
+		<service>Networking</service>
+		<service_link>http://www.linkedin.com/in/dominicsayers</service_link>
+		<service_description>LinkedIn</service_description>
+		<title>Networking</title>
+		<feed_link>http://www.linkedin.com/in/dominicsayers</feed_link>
+		<feed_title>LinkedIn</feed_title>
+		<feed_icon_alt>LinkedIn</feed_icon_alt>
+		<feed_icon>linkedin_14px.gif</feed_icon>
+	</link>
+
+	<link>
+		<service>Friendfeed (all)</service>
+		<service_link>http://friendfeed.com/dominicsayers</service_link>
+		<service_description>FriendFeed</service_description>
+		<title>Lifestream</title>
+		<feed_link>http://friendfeed.com/dominicsayers?format=atom</feed_link>
+		<feed_title>Subscribe to Dominic's lifestream</feed_title>
+		<feed_icon_alt>Feed</feed_icon_alt>
+		<feed_icon>feed.gif</feed_icon>
+	</link>
+
+	<link>
+		<service>Delicious</service>
+		<service_link>http://delicious.com/dominicsayers</service_link>
+		<service_description>Delicious</service_description>
+		<title>Links</title>
+		<feed_link>http://feeds.delicious.com/v2/rss/dominicsayers</feed_link>
+		<feed_title>Subscribe to Dominic's links</feed_title>
+		<feed_icon_alt>Feed</feed_icon_alt>
+		<feed_icon>feed.gif</feed_icon>
+	</link>
+
+	<link>
+		<service>Resume / CV</service>
+		<service_link>/resume/DominicSayers.doc</service_link>
+		<service_description>Resume / CV</service_description>
+		<title>Resume</title>
+		<feed_link>/resume/DominicSayers.doc</feed_link>
+		<feed_title>Resume / CV</feed_title>
+		<feed_icon_alt>Resume / CV</feed_icon_alt>
+		<feed_icon>document_14px.gif</feed_icon>
+	</link>
+</links>

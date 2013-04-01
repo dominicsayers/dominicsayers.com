@@ -1,0 +1,16 @@
+﻿/*
+	This is just to make the page elements visible
+	It's not part of the problem or the solution so I'm putting it in a separate file
+*/
+
+#banner {
+	background-color:#FFCCFF;
+}
+
+#sidebar_left {
+	background-color:#CCFFFF;
+}
+
+#sidebar_right {
+	background-color:#CCFFCC;
+}

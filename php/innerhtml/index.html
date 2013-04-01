@@ -1,0 +1,27 @@
+<html>
+
+<head>
+<title>Cross-browser innerHTML bug</title>
+</head>
+
+<body>
+
+<div id="good">
+</div>
+<div id="bad">
+</div>
+<script type="text/javascript">
+document.getElementById("good").innerHTML = '<span style="color:red"></span><p>This is OK</p>';
+document.getElementById("bad").innerHTML  = '<span style="color:red" /><p>This is red because it\'s got inside the span</p>';
+</script>
+<p>I believe both bits of text above should be in black. I&#39;m setting the innerHTML
+property of their divs to an empty span followed by some text. In the first case
+I&#39;m using this syntax: &lt;span&gt;&lt;/span&gt;. In the second case, I&#39;m using the shortened
+syntax &lt;span /&gt;. Using the shortened syntax, setting innerHTML seems to insert the text <em>into</em> the empty
+span element. Use View Source to see what I mean.</p>
+<p>Any ideas why? Contact me on Twitter as @dominicsayers or email
+<a href="mailto:dominic@sayers.cc">dominic@sayers.cc</a></p>
+
+</body>
+
+</html>

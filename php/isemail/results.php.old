@@ -1,0 +1,249 @@
+<?php require_once 'context/section-context.php'; ?>
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+	<title>Dominic Sayers - RFC-compliant email address validator - test results</title>
+
+	<style type="text/css">
+.isemail {
+	font-size:12px;
+	clear:left;
+	margin:0;
+	padding:0;
+}
+
+.isemail_address {
+	line-height:12pt;
+	float:left;
+	overflow:hidden;
+	width:200px;
+	margin:0 0 0 12px;
+	padding:3px;
+}
+
+.isemail_result {
+	float:left;
+	width:60px;
+	margin:0 3px 0 3px;
+	padding:3px;
+}
+
+.isemail_expected			{background-color:white;}
+.isemail_unexpected			{background-color:#FFCCCC;}
+.isemail_header				{background-color:#CCCCCC;margin-bottom:3px;}
+
+.isemail_tooltip			{position:relative;}
+.isemail_tooltip:hover span		{display: block;}
+.isemail_tooltip span {
+	display: none;
+	position: absolute;
+	top: 20px;
+	left: 10px;
+	padding: 5px;
+	z-index: 100;
+	background-color: #323232;
+	color: #fff;
+	width:auto;
+	-moz-border-radius: 5px; /* this works only in camino/firefox */
+	-webkit-border-radius: 5px; /* this is for Safari, Chrome etc. */
+	border-radius: 5px; /* this is for CSS3 browsers */
+}
+
+.imglink {
+	vertical-align: middle;
+	margin-right:1em;
+}
+
+	</style>
+	<link href="../CSS/style.php" rel="stylesheet" type="text/css" />
+	<link href="../CSS/layout.php" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="centre_content">
+	<h2>RFC-compliant email address validator</h2>
+	<br/>
+	<div>
+		<a target="_blank" href="http://isemail.googlecode.com">
+			<img alt="Download" src="http://chart.apis.google.com/chart?chs=80x80&cht=qr&chl=http://isemail.googlecode.com&chld=|0" class="imglink" style="float:left;"/>
+		</a>
+		<div>
+			<a target="_blank" href="http://isemail.googlecode.com/files/is_email-3.0.zip">
+				<span>Download the PHP validator <img alt="Download" src="<?php echo $browseroot; ?>/static/images/icons/is_email_16.png"/ style="vertical-align:text-bottom;"/> <span style="font-size:9px;background-color:yellow;">NEW</span></span>
+			</a>
+			<br/>
+			<p class="small">Version 3.0 released February 22nd 2011</p>
+		</div>
+		<div>
+			<a target="_blank" href="http://code.google.com/p/isemail/downloads/detail?name=is_email_java.zip">
+				<span>Download the Java validator <img alt="Download" src="<?php echo $browseroot; ?>/static/images/icons/is_email_16.png"/ style="vertical-align:text-bottom;"/></span>
+			</a>
+			<br/>
+			<p class="small">Version 2.10 released October 9th 2010</p>
+		</div>
+	</div>
+	<br style="clear:left;"/>
+	<p>This is free code to validate an email address against the various relevant internet <a target="_blank" href="http://en.wikipedia.org/wiki/Request_for_Comments">RFCs</a>.</p>
+	<p><a href=".">Back to discussion page</a></p>
+	<h2>The Validators - head-to-head</h2>
+	<p class="ramble"><span class="isemail_unexpected">result</span> = unexpected result. Hover over each test for more details.</p>
+
+<?php
+error_reporting(E_ALL ^ E_NOTICE);
+
+require_once '../source/is_email/test/tests.php';	// Dominic Sayers
+require_once 'others/MichaelRushton.php';		// Michael Rushton
+require_once 'others/EmailAddressValidator.php';	// Dave Child
+require_once 'others/haacked.php';			// Phil Haack
+require_once 'others/validate_email.php';		// Paul Gregg
+require_once 'others/rfc3696.php';			// Cal Henderson
+//require_once 'others/SimonSlick.php';			// Simon Slick
+
+function htmlResult($result, $expected) {
+	$html = '';
+
+	foreach ($result as $thisResult) {
+		$classExpected = ((bool) $thisResult === (bool) $expected) ? "isemail_expected" : "isemail_unexpected";
+		$text = ((bool) $thisResult) ? "Valid" : "Invalid";
+		$html .= "	<p class=\"isemail_result $classExpected\">$text</p>\n";
+	}
+
+	return $html;
+}
+
+function analyse($thisResults, $expected) {
+	global $results;
+
+	$results['count']++;
+
+	foreach ($thisResults as $key => $result) {
+		if ($result == $expected) $results['function'][$key]++;
+	}
+}
+
+$results		= array();
+$results['count']	= 0;
+$results['function'][0]	= 0;
+$results['function'][1]	= 0;
+$results['function'][2]	= 0;
+$results['function'][3]	= 0;
+$results['function'][4]	= 0;
+$results['function'][5]	= 0;
+$results['function'][6]	= 0;
+
+$html		= '';
+$validator	= new EmailAddressValidator;
+$tests		= new is_email_test('../source/is_email/test/tests.xml');
+$version	= $tests->version();
+$test_count	= $tests->count();
+
+for ($i = 0; $i < $test_count; $i++) {
+	$test		= $tests->item($i);
+
+	$id		= $test->id;
+	$address	= $test->address;
+	$category	= $test->category;
+	$diagnosis	= $test->diagnosis;
+	$email		= $test->email;
+	$address_html	= $test->address_html;
+	$comment	= $test->comment;
+
+	$email_url	= urlencode($email);
+	$testlink	= "../source/is_email/test/?address=$email_url";
+
+	$result		= $tests->test($email, $category, $diagnosis);	// This is why we're here
+
+	$tooltipText	= ($comment === '') ? '' : "<br />Comment: $comment";
+	$expected	= (constant($category) < ISEMAIL_THRESHOLD) ? true : false;
+	$expectedResult	= ($expected) ? "Valid" : "Invalid";
+
+	// Get enhanced results from is_email()
+	$thisResult		= ($result['actual']['diagnosis'] < ISEMAIL_THRESHOLD);
+	$diagnosis		= $result['actual']['analysis'][ISEMAIL_META_DESC];
+	$tooltipWarn		= '';
+
+// 5.3	$rushton		= \Models\Validators\rushtonEmailAddressValidator::SetEmailAddress($address);
+	$rushton		= rushtonEmailAddressValidator::SetEmailAddress($address);
+
+	$result = array();
+	$result[]		= $thisResult;					// Dominic Sayers
+	$result[]		= $rushton->validate();				// Michael Rushton
+	$result[]		= $validator->check_email_address($address);	// Dave Child
+	$result[]		= emailTest($address);				// Phil Haack
+	$result[]		= filter_var($address, FILTER_VALIDATE_EMAIL);	// PHP built-in validation
+	$result[]		= ValidateEmail($address);			// Paul Gregg
+	$result[]		= is_rfc3696_valid_email_address($address);	// Cal Henderson
+
+	$html .= "<div class=\"isemail isemail_tooltip\">\n";
+	$html .= "	\n";
+	$html .= '	<p class="isemail_address"><a href="' . $testlink . '" target="_blank">' . $address . "</a><span>Test # $id<br /><strong>$address</strong>$tooltipText$tooltipWarn<br /><strong>Diagnosis: $diagnosis</strong></span></p>\n";
+
+	// Validation routines
+	$html .= htmlResult($result, $expected) . "\n";
+	$html .= "</div>\n";
+
+	// Analysis
+	analyse($result, $expected);
+}
+
+$count = $results['count'];
+
+echo <<<HTML
+<div class="isemail isemail_tooltip">
+	<p class="isemail_address">Test suite version $version<br />$count tests included</p>
+	<p class="isemail_result isemail_header"><a target="_blank" href="http://code.google.com/p/isemail/source/browse/PHP/trunk">Dominic<br />Sayers</a></p>
+	<p class="isemail_result isemail_header"><a target="_blank" href="http://squiloople.com/2009/12/20/email-address-validation/">Michael<br />Rushton</a></p>
+	<p class="isemail_result isemail_header"><a target="_blank" href="http://code.google.com/p/php-email-address-validation">Dave<br />Child</a></p>
+	<p class="isemail_result isemail_header"><a target="_blank" href="http://haacked.com/archive/2007/08/21/i-knew-how-to-validate-an-email-address-until-i.aspx">Phil<br />Haack</a></p>
+	<p class="isemail_result isemail_header"><a target="_blank" href="http://php.net/manual/en/function.filter-var.php">PHP<br />5.2.0+</a></p>
+	<p class="isemail_result isemail_header"><a target="_blank" href="http://pgregg.com/projects/php/code/showvalidemail.php">Paul<br />Gregg</a></p>
+	<p class="isemail_result isemail_header"><a target="_blank" href="http://code.iamcal.com/php/rfc822/">Cal<br />Henderson</a></p>
+</div>
+
+<div class="isemail isemail_tooltip">
+	<p class="isemail_address">Percent correct</p>
+HTML;
+
+foreach ($results['function'] as $score) {
+	$percent = round(100 * $score / $count, 0) . '%';
+	echo "<p class=\"isemail_result isemail_expected\">$percent</p>";
+}
+
+echo <<<HTML
+</div>
+HTML;
+
+echo $html;
+?>
+
+	<p style="clear:left">&nbsp;</p>
+	<p class="mini">A note on the Cal Henderson result: Cal's validator is validating against RFC 5322 with additional constraints imposed by RFC 5321 where appropriate. In other words, he is validating the <em>To:</em> field in an email message. The envelope address has a more restrictive format, so his validator allows certain elements that are not allowed in the envelope - like comments for instance. This reduces his score on my test, which is designed to validate envelope addresses.</p>
+	<p><a href=".">Back to discussion page</a></p>
+	<p class="thrust mini">
+	&lt; Back to <a href="<?php echo $_SESSION['path']['browseroot'] ?>/">Home</a>
+	| Blog posts: <a target="_blank" href="http://blog.dominicsayers.com/tag/email-address-validation/">Email address validation</a>
+	| <a target="_blank" href="http://blog.dominicsayers.com/tag/code/">Code</a>
+	| <a target="_blank" href="http://blog.dominicsayers.com">Latest post</a>
+	</p>
+
+	<div id="comments">
+		<div id="disqus_thread">
+		</div>
+	</div>
+	<script src="http://disqus.com/forums/dominicsayers/embed.js" type="text/javascript"></script>
+	<noscript>
+	<a target="_blank" href="http://dominicsayers.disqus.com/?url=ref">View the discussion
+	thread.</a>
+	</noscript>
+	<a class="dsq-brlink" href="http://disqus.com">blog comments
+	powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<div id="sidebar_left"> <?php include("../_includes/left-sidebar.php"); ?> </div>
+<div id="sidebar_right"><?php include("../_includes/right-sidebar.php"); ?></div>
+<div id="banner">       <?php include("../_includes/banner.php"); ?>       </div>
+
+<?php include("../_includes/analytics.php"); ?>
+</body>
+</html>
